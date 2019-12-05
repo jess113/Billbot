@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Search</title>
+    <style>body {font-family:Helvetica,Arial,sans-serif}
+			h1 {font-size:1.5em;margin:0em}
+	</style>
+</head>
+<body>
+<form action="search" method="post">
+    <h1>Image search</h1>
+    <label>Please enter a Flickr tag</label>
+    <br/>
+    <input type="text" id="tag" name="tag"/>
+    <input type="submit" value="Search" name="btn"/>
+</form>
+{% if prompt %}
+<div class= 'formtitle'>{{prompt}}</div>
+{% endif %}
+</body>
+</html>
