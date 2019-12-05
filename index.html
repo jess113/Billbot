@@ -8,32 +8,11 @@
 	</style>
 </head>
 <body>
-	<h1>Search results</h1>
+	<h1>Search Results</h1>
 	<div class="row">
-	<p>By views:</p>
-	{% for photo in top3Views %}
-	<div class='thumbnail'>
-		<img src="{{photo.photo.thumbnailURL}}" alt="{{photo.photo.title._content}}">
-	</div>
-	{% endfor %}
-	</div>
-
-	<div class="row">
-	<p>By tags:</p>
-	{% for photo in top3Tags %}
-	<div class="thumbnail">
-		<img src="{{photo.photo.thumbnailURL}}" alt="{{photo.photo.title._content}}">
-	</div>
-	{% endfor %}
-	</div>
-
-	<div class="row">
-	<p>By comments:</p>
-	{% for photo in top3Comments %}
-	<div class="thumbnail">
-		<img src="{{photo.photo.thumbnailURL}}" alt="{{photo.photo.title._content}}">
-	</div>
-	{% endfor %}
+	<p>Here are the Wikitext results, happy editing!</p>
+	<div>
+		<p>{{results}}</p>
 	</div>
 </body>
 </html>

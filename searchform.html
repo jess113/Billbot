@@ -2,17 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Image Search</title>
+    <title>Search Bill</title>
     <style>body {font-family:Helvetica,Arial,sans-serif}
 			h1 {font-size:1.5em;margin:0em}
 	</style>
 </head>
 <body>
 <form action="search" method="post">
-    <h1>Image search</h1>
-    <label>Please enter a Flickr tag</label>
+    <h1>Search Bill</h1>
+    <label>Please enter a meeting of Congress (105-116)</label>
     <br/>
-    <input type="text" id="tag" name="tag"/>
+    <input type="text" id="congress" name="congress"/>
+    <label>Please enter a bill ID)</label>
+    <br/>
+    <input type="text" id="bill_id" name="bill_id"/>
     <input type="submit" value="Search" name="btn"/>
 </form>
 {% if prompt %}
