@@ -1,0 +1,155 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Bill</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+            h1 {font-size: 2em;margin: 0.67em 0; color: #333333}
+            body {
+                overflow: hidden;
+                margin: 0;
+            }
+            .s003 {
+                min-height: 100vh;
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-pack: center;
+                    justify-content: center;
+                -ms-flex-align: center;
+                    align-items: center;
+                font-family: 'Helvetica', sans-serif;
+                background-color: #f2eecb;
+                background-size: cover;
+                background-position: center center;
+                padding: 15px;
+            }
+            .s003 form {
+                width: 100%;
+                max-width: 790px;
+                margin-bottom: 0;
+            }
+            .s003 form .inner-form {
+                background: #fff;
+                display: -ms-flexbox;
+                display: flex;
+                width: 100%;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
+                -ms-flex-align: center;
+                    align-items: center;
+                box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+                border-radius: 3px;
+            }
+            .s003 form .inner-form .input-field {
+                height: 68px;
+            }
+            .s003 form .inner-form .input-field input {
+              height: 100%;
+              background: transparent;
+              border: 0;
+              display: block;
+              width: 100%;
+              padding: 10px 32px;
+              font-size: 16px;
+              color: #555;
+            }
+
+            .s003 form .inner-form .input-field input.placeholder {
+              color: #888;
+              font-size: 16px;
+            }
+
+            .s003 form .inner-form .input-field input:-moz-placeholder {
+              color: #888;
+              font-size: 16px;
+            }
+
+            .s003 form .inner-form .input-field input::-webkit-input-placeholder {
+              color: #888;
+              font-size: 16px;
+            }
+
+            .s003 form .inner-form .input-field input:hover, .s003 form .inner-form .input-field input:focus {
+              box-shadow: none;
+              outline: 0;
+              border-color: #fff;
+            }
+
+            .s003 form .inner-form .input-field.first-wrap {
+              width: 220px;
+              border-right: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+            .s003 form .inner-form .input-field.second-wrap {
+              -ms-flex-positive: 1;
+                  flex-grow: 1;
+            }
+
+            .s003 form .inner-form .input-field.third-wrap {
+              width: 74px;
+            }
+
+            .s003 form .inner-form .input-field.third-wrap .btn-search {
+              height: 100%;
+              width: 100%;
+              white-space: nowrap;
+              color: #fff;
+              border: 0;
+              cursor: pointer;
+              background: #333333;
+              transition: all .2s ease-out, color .2s ease-out;
+            }
+
+            .s003 form .inner-form .input-field.third-wrap .btn-search svg {
+              width: 16px;
+            }
+
+            .s003 form .inner-form .input-field.third-wrap .btn-search:hover {
+              background: #50c058;
+            }
+
+            .s003 form .inner-form .input-field.third-wrap .btn-search:focus {
+                outline: 0;
+                box-shadow: none;
+            }
+	</style>
+</head>
+<body>
+    <div class="s003">
+        <form action="search" method="post">
+            <h1>Search Bill</h1>
+            <div class="inner-form">
+                <div class="input-field first-wrap">
+                    <select id="congress" name="congress" style="width:220px; height:68px; padding: 10px 32px;
+                                                                 font-family: Arial; color: #888; font-size: 16px;
+                                                                 border: 0;">
+                        <option placeholder="">Select Congress</option>
+                        <option value="116">116</option>
+                        <option value="115">115</option>
+                        <option value="114">114</option>
+                        <option value="113">113</option>
+                        <option value="112">112</option>
+                        <option value="111">111</option>
+                        <option value="110">110</option>
+                        <option value="109">109</option>
+                        <option value="108">108</option>
+                        <option value="107">107</option>
+                        <option value="106">106</option>
+                        <option value="105">105</option>
+                    </select>
+                </div>
+                <div class="input-field second-wrap">
+                    <input type="text" id="bill_id" name="bill_id" placeholder="Enter Bill ID"/>
+                </div>
+                <div class="input-field third-wrap">
+                    <button class="btn-search" type="submit" name="btn"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+            <p style="font-size: 10px; text-align: right">Bill IDs consist of an alphabetic abbreviation ("hr" for House of Representatives; "s" for Senate) plus a unique number</p>
+        </form>
+        {% if prompt %}
+        <div class= 'formtitle'>{{prompt}}</div>
+        {% endif %}
+    </div>
+</body>
+</html>

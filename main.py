@@ -33,7 +33,7 @@ def getbillsafe(congress, bill_id):
             logging.error("Unknown error trying to retrieve data")
         return None
 
-def summarizebillsafe(congress, bill_id):
+def gettitlesafe(congress, bill_id):
     result = getbillsafe(congress, bill_id)
     if result is not None:
         billdata = result["results"][0]
@@ -41,6 +41,13 @@ def summarizebillsafe(congress, bill_id):
             title = billdata["short_title"]
         else:
             title = billdata["title"]
+        return title
+
+def summarizebillsafe(congress, bill_id):
+    result = getbillsafe(congress, bill_id)
+    if result is not None:
+        billdata = result["results"][0]
+        title = gettitlesafe(congress, bill_id)
         billsummary = "\n{{Infobox U.S. legislation" +\
                         "\n| shorttitle = " + title +\
                         "\n| longtitle = " + billdata["title"] +\
@@ -96,14 +103,14 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         vals = {}
         vals['page_title'] = "Search Bills by Keywords"
-        template = JINJA_ENVIRONMENT.get_template('searchform.html')
+        template = JINJA_ENVIRONMENT.get_template('templates/searchform.html')
         self.response.write(template.render(vals))
 
 class SearchHandler(webapp2.RequestHandler):
     def get(self):
         vals = {}
         vals['page_title'] = "Search Bills by Keywords"
-        template = JINJA_ENVIRONMENT.get_template('searchform.html')
+        template = JINJA_ENVIRONMENT.get_template('templates/searchform.html')
         self.response.write(template.render(vals))
     def post(self):
         vals = {}
@@ -114,13 +121,16 @@ class SearchHandler(webapp2.RequestHandler):
         logging.info(congress + bill_id)
         logging.info(go)
         if congress and bill_id:
-            vals["results"] = summarizebillsafe(congress, bill_id)
-            template = JINJA_ENVIRONMENT.get_template('index.html')
+            vals["congress"] = congress
+            vals["bill_id"] = bill_id.upper()
+            vals["title"] = gettitlesafe(congress, bill_id)
+            vals["summary"] = summarizebillsafe(congress, bill_id)
+            template = JINJA_ENVIRONMENT.get_template('templates/index.html')
             self.response.write(template.render(vals))
             logging.info('keyword = ' + congress + bill_id)
         else:
             vals['prompt'] = "Please enter valid Congress meeting and bill ID"
-            template =JINJA_ENVIRONMENT.get_template('searchform.html')
+            template =JINJA_ENVIRONMENT.get_template('templates/searchform.html')
             self.response.write(template.render(vals))
 
 application = webapp2.WSGIApplication([('/', MainHandler),('/search', SearchHandler)], debug=True)
