@@ -16,7 +16,7 @@ def lowerfirst(s):
 def pretty(obj):
     return json.dumps(obj, sort_keys=True, indent=2)
 
-headers = {"X-API-Key": "iIhSv9hvM7aFR7GMSPBZz2lznWqqPg31LYPqTOyP"}
+headers = {"X-API-Key": YOUR_API}
 
 def getbillsafe(congress, bill_id):
     try:
