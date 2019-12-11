@@ -1,35 +1,40 @@
 <html>
 <head>
 	<title>Search Results</title>
-	<style>h1 {font-size: 2em;margin: 0.67em 0; color: #333333}
-            body {
-				overflow: hidden;
-				margin: 0;
-            }
-            .s003 {
-				min-height: 100vh;
-                display: -ms-flexbox;
-                display: flex;
-                -ms-flex-pack: center;
-                    justify-content: center;
-                -ms-flex-align: center;
-                    align-items: center;
-                font-family: 'Helvetica', sans-serif;
-                background-color: #f2eecb;
-                background-size: cover;
-                background-position: center center;
-                padding: 15px;
-            }
+	<style>body {font-family:Helvetica,Arial,sans-serif}
+			h1 {font-size:1.5em;margin:0em}
+			.thumbnail{width:150px;height:150px;float:left;margin:0.2em;position:relative;}
+			.row:after {content: ""; display: table; clear: both;}
 	</style>
 </head>
-	<body>
-	    <div class="s003">
-			<div class="row">
-				<h1>Here's the Wikitext for {{bill_id}}-{{congress}}, happy editing!</h1>
-				<p>{{title}}</p>
-				<p>{{summary}}</p>
-			</div>
-		</div>
-	</body>
+<body>
+	<h1>Search results</h1>
+	<div class="row">
+	<p>By views:</p>
+	{% for photo in top3Views %}
+	<div class='thumbnail'>
+		<img src="{{photo.photo.thumbnailURL}}" alt="{{photo.photo.title._content}}">
+	</div>
+	{% endfor %}
+	</div>
+
+	<div class="row">
+	<p>By tags:</p>
+	{% for photo in top3Tags %}
+	<div class="thumbnail">
+		<img src="{{photo.photo.thumbnailURL}}" alt="{{photo.photo.title._content}}">
+	</div>
+	{% endfor %}
+	</div>
+
+	<div class="row">
+	<p>By comments:</p>
+	{% for photo in top3Comments %}
+	<div class="thumbnail">
+		<img src="{{photo.photo.thumbnailURL}}" alt="{{photo.photo.title._content}}">
+	</div>
+	{% endfor %}
+	</div>
+</body>
 </html>
 
