@@ -16,7 +16,7 @@ def lowerfirst(s):
 def pretty(obj):
     return json.dumps(obj, sort_keys=True, indent=2)
 
-headers = {"X-API-Key": "YOUR_API"}
+headers = {"X-API-Key": "iIhSv9hvM7aFR7GMSPBZz2lznWqqPg31LYPqTOyP"}
 
 def getbillsafe(congress, bill_id):
     try:
@@ -81,7 +81,7 @@ def summarizebillsafe(congress, bill_id):
                                 "that was enacted on %s." % (title, dateconvert(billdata["enacted"]))
             else:
                 billsummary += "\n}}" + \
-                                "<p>The '''%s''' is an [[Bill (United States Congress)|bill of the United States " \
+                                "<p>The '''%s''' is a [[Bill (United States Congress)|bill of the United States " \
                                 "Congress]] that was introduced on %s by %s [[%s]] but ''not'' enacted. On %s, it was %s" \
                                 % (title, dateconvert(billdata["introduced_date"]), billdata["sponsor_title"],
                                    billdata["sponsor"], dateconvert(billdata["latest_major_action_date"]),
@@ -142,4 +142,5 @@ class SearchHandler(webapp2.RequestHandler):
             self.response.write(template.render(vals))
 
 application = webapp2.WSGIApplication([('/', MainHandler),('/search', SearchHandler)], debug=True)
+
 
